@@ -71,15 +71,28 @@ void Chemin::partitionner(const string & ville, Chemin & cheminAvec,
 }
 
 void Chemin::importerCsv(istream & is) {
-
-    // TODO
-
+  Route road;
+  string buffer;
+  while(is.good()){
+    if (getline(is, buffer, ' ')) 
+      road.villeA_=buffer;
+    if (getline(is, buffer, ' ')) 
+      road.villeB_=buffer;
+    if (getline(is, buffer, '\n'))
+      try{
+	road.distance_=stoi(buffer);
+	routes_.push_back(road);
+      }
+      catch(...){ }
+  }
 }
 
 void Chemin::exporterDot(ostream & os, const string & ville1, 
         const string & ville2) const {
+  /*
+    os << "graph {\n  splines=line;\n" 
 
-    // TODO
 
+   */
 }
 

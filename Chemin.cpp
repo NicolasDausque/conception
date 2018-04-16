@@ -66,7 +66,7 @@ Chemin Chemin::calculerPlusCourt(const string & ville1,
 void Chemin::partitionner(const string & ville, Chemin & cheminAvec, 
         Chemin & cheminSans) const {
 
-    // TODO
+    
 
 }
 
@@ -89,10 +89,18 @@ void Chemin::importerCsv(istream & is) {
 
 void Chemin::exporterDot(ostream & os, const string & ville1, 
         const string & ville2) const {
-  /*
-    os << "graph {\n  splines=line;\n" 
-
-
-   */
+  Chemin trace=calculerPlusCourt(ville1,ville2);
+  os << "graph {\n  splines=line;\n";
+  for(int i=0; i<trace.routes_.size();i++){
+    os << trace.routes_[i].villeA_ << " -- ";
+    if(i<trace.routes_.size()-1){
+      os << trace.routes_[i].villeB_;
+    }
+  }
+  //os << "[color=red, penwidth=3];\n";
+  for (Route road : routes_){
+    os << road.villeA_ << " -- " << road.villeB_ << "[label=" << road.distance_ << "];\n";
+  }
+  os << "}";
 }
 

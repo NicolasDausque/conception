@@ -20,11 +20,11 @@ int main(int argc, char ** argv) {
     }
 
     try {
-
-        // TODO importer le fichier CSV
-
-        // TODO exporter le fichier dot correspondant
-
+      Chemin chemin;
+      ifstream is(argv[1]);
+      ofstream os(argv[2]);
+      chemin.importerCsv(is);
+      chemin.exporterDot(os, argv[3], argv[4]);
     }
     catch (const string & msg) {
         cerr << msg << endl;

@@ -2,15 +2,14 @@
 
 bool Route::operator==(const Route & r) const {
 
-    // TODO
-
+  if(distance_==r.distance_ &&( villeA_==r.villeA_ && villeB_==r.villeB_)||( villeA_==r.villeB_ && villeB_==r.villeA_)){
+    return true;
+  }
     return false;
 }
 
 bool Route::operator!=(const Route & r) const {
-
-    // TODO
-
-    return false;
+  return !(*this==r);
 }
+
 
